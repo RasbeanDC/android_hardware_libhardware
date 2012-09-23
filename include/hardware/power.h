@@ -41,6 +41,7 @@ __BEGIN_DECLS
 typedef enum {
     POWER_HINT_VSYNC = 0x00000001,
     POWER_HINT_INTERACTION = 0x00000002,
+    POWER_HINT_CPU_BOOST = 0x00000004,
 } power_hint_t;
 
 /**
@@ -107,6 +108,12 @@ typedef struct power_module {
      *     events are incoming.  CPU and GPU load may be expected soon,
      *     and it may be appropriate to raise speeds of CPU, memory bus,
      *     etc.  The data parameter is unused.
+     *
+     * POWER_HINT_CPU_BOOST
+     *
+     *     An operation is happening where it would be ideal for the CPU to
+     *     be boosted for a specific duration. The data parameter is an
+     *     integer value of the boost duration in microseconds.
      *
      * A particular platform may choose to ignore any hint.
      *
